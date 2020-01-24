@@ -1,33 +1,42 @@
-From 73961d3486d25076e24cb569b995256f076e52e5 Mon Sep 17 00:00:00 2001
+From 9e736adc21e2e347bfa0cf2e3edc5d28fb1b4832 Mon Sep 17 00:00:00 2001
 From: Martin Abente Lahaye <martin.abente.lahaye@gmail.com>
-Date: Wed, 27 Nov 2019 18:59:23 -0300
-Subject: [PATCH 2/6] greeting
+Date: Fri, 24 Jan 2020 11:51:05 -0300
+Subject: [PATCH 4/5] fix-greeting
 
 ---
- activity.py | 10 ++--------
- 1 file changed, 2 insertions(+), 8 deletions(-)
+ activity.py | 19 ++++++-------------
+ 1 file changed, 6 insertions(+), 13 deletions(-)
 
 diff --git a/activity.py b/activity.py
-index 87b1d6e..801eb49 100644
+index 260f5bb..335f25b 100644
 --- a/activity.py
 +++ b/activity.py
-@@ -366,14 +366,8 @@ class SpeakActivity(SugarCompatibleActivity):
-             if self._tablet_mode:
-                 self._entry.props.text = _('Hello %s.') \
-                     % self.owner.props.nick.encode('utf-8', 'ignore')
+@@ -372,19 +372,12 @@ class SpeakActivity(SugarCompatibleActivity):
+ 
+         presenceService = presenceservice.get_instance()
+         self.owner = presenceService.get_owner()
+-        if self._first_time:
+-            # say hello to the user
+-            if self._tablet_mode:
+-                self._entry.props.text = _('Hello %s.') \
+-                    % self.owner.props.nick
 -            self.face.say_notification(_('Hello %s. Please Type something.')
 -                                       % self.owner.props.nick)
 -        else:
 -            if self._tablet_mode:
 -                self._entry.props.text = _('Welcome back %s.') \
--                    % self.owner.props.nick.encode('utf-8', 'ignore')
+-                    % self.owner.props.nick
 -            self.face.say_notification(_('Welcome back %s.')
 -                                       % self.owner.props.nick)
++        # say hello to the user
++        if self._tablet_mode:
++            self._entry.props.text = _('Hello %s.') \
++                % self.owner.props.nick
 +        self.face.say_notification(_('Hello %s. Please Type something.')
 +                                   % self.owner.props.nick)
          self._set_idle_phrase(speak=False)
          self._first_time = False
  
 -- 
-2.19.1
+2.23.0
 

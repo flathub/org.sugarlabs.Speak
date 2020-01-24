@@ -23,13 +23,12 @@
     "modules": [
         "shared-modules/dbus-glib/dbus-glib-0.110.json",
         "shared-modules/intltool/intltool-0.51.json",
-        "shared-modules/python2.7/python-2.7.json",
         {
             "name": "empy",
             "cleanup": [ "*" ],
             "buildsystem": "simple",
             "build-commands": [
-                "pip2 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} empy"
+                "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} empy"
             ],
             "sources": [
                 {
@@ -39,9 +38,9 @@
                 }
             ],
             "post-install": [
-                "chmod +x /app/lib/python2.7/site-packages/em.py",
+                "chmod +x /app/lib/python3.7/site-packages/em.py",
                 "mkdir -p /app/bin/",
-                "ln -s /app/lib/python2.7/site-packages/em.py /app/bin/empy"
+                "ln -s /app/lib/python3.7/site-packages/em.py /app/bin/empy"
             ]
         },
         {
@@ -120,7 +119,7 @@
             "name": "python-dbus",
             "buildsystem": "simple",
             "build-commands": [
-                "pip2 install --no-index --find-links \"file://${PWD}\" --install-option=\"--prefix=${FLATPAK_DEST}\" dbus-python"
+                "pip3 install --no-index --find-links \"file://${PWD}\" --install-option=\"--prefix=${FLATPAK_DEST}\" dbus-python"
             ],
             "sources": [
                 {
@@ -134,7 +133,7 @@
             "name": "decorator",
             "buildsystem": "simple",
             "build-commands": [
-                "pip2 install --no-index --find-links \"file://${PWD}\" --install-option=\"--prefix=${FLATPAK_DEST}\" decorator"
+                "pip3 install --no-index --find-links \"file://${PWD}\" --install-option=\"--prefix=${FLATPAK_DEST}\" decorator"
             ],
             "sources": [
                 {
@@ -148,7 +147,7 @@
             "name": "python-six",
             "buildsystem": "simple",
             "build-commands": [
-                "pip2 install --no-index --find-links \"file://${PWD}\" --install-option=\"--prefix=${FLATPAK_DEST}\" six"
+                "pip3 install --no-index --find-links \"file://${PWD}\" --install-option=\"--prefix=${FLATPAK_DEST}\" six"
             ],
             "sources": [
                 {
@@ -175,44 +174,20 @@
             ]
         },
         {
-            "name": "pycairo",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip2 install --no-index --find-links \"file://${PWD}\" --install-option=\"--prefix=${FLATPAK_DEST}\" pycairo"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/3c/1a/c0478ecab31baae50fda9956547788afbd0ca563adc52c9b03cab30f17eb/pycairo-1.18.2.tar.gz",
-                    "sha256": "dcb853fd020729516e8828ad364084e752327d4cff8505d20b13504b32b16531"
-                }
-            ]
-        },
-        {
-            "name": "PyGObject",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip2 install --no-use-pep517 --no-index --find-links ${PWD} --install-option=\"--prefix=${FLATPAK_DEST}\" $PWD"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/46/8a/b183f3edc812d4d28c8b671a922b5bc2863be5d38c56b3ad9155815e78dd/PyGObject-3.34.0.tar.gz",
-                    "sha256": "2acb0daf2b3a23a90f52066cc23d1053339fee2f5f7f4275f8baa3704ae0c543"
-                }
-            ]
-        },
-        {
             "name": "sugar-toolkit-gtk3",
             "no-parallel-make": true,
             "config-opts": [
-                "--with-python2"
+                "--with-python3"
             ],
             "sources": [
                 {
                     "type": "archive",
                     "url": "http://download.sugarlabs.org/sources/sucrose/glucose/sugar-toolkit-gtk3/sugar-toolkit-gtk3-0.116.tar.xz",
                     "sha256": "745a360577efceb10f57ca4cbad5f9ec61f7ed6cc381eeb72422bbd7455b770b"
+                },
+                {
+                    "type": "patch",
+                    "path": "sugar-toolkit-fix-speech.patch"
                 }
             ]
         },
@@ -220,14 +195,14 @@
             "name": "sugarapp",
             "buildsystem": "simple",
             "build-commands": [
-                "pip2 install --no-index --find-links ${PWD} --install-option=\"--prefix=${FLATPAK_DEST}\" $PWD"
+                "pip3 install --no-index --find-links ${PWD} --install-option=\"--prefix=${FLATPAK_DEST}\" $PWD"
             ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/tchx84/sugarapp.git",
-                    "tag": "v1.5",
-                    "commit": "ea6ee3cb3c1289d4112cf5fc6c4db0ab5cd9d8d6"
+                    "tag": "v1.11",
+                    "commit": "68b300b93be31dca3e6d621c107c703bf140aa03"
                 }
             ]
         },
@@ -235,7 +210,7 @@
             "name": "numpy",
             "buildsystem": "simple",
             "build-commands": [
-                "pip2 install --no-index --find-links=\"file://${PWD}\" --install-option=\"--prefix=${FLATPAK_DEST}\" numpy"
+                "pip3 install --no-index --find-links=\"file://${PWD}\" --install-option=\"--prefix=${FLATPAK_DEST}\" numpy"
             ],
             "sources": [
                 {
@@ -277,14 +252,14 @@
             "name": "speak",
             "buildsystem": "simple",
             "build-commands": [
-                "python2 setup.py install --prefix=${FLATPAK_DEST} --skip-install-desktop-file --skip-install-mime"
+                "python3 setup.py install --prefix=${FLATPAK_DEST} --skip-install-desktop-file --skip-install-mime"
             ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/sugarlabs/speak.git",
-                    "tag": "v57",
-                    "commit": "1a37bd2adc290a61954e29af094b0c7a86e49efc"
+                    "tag": "v58",
+                    "commit": "5345595059120485eed971bbc48e633a44deb130"
                 },
                 {
                     "type": "patch",
@@ -292,15 +267,11 @@
                 },
                 {
                     "type": "patch",
-                    "path": "speak-fix-i18n.patch"
-                },
-                {
-                    "type": "patch",
                     "path": "speak-fix-greeting.patch"
                 },
                 {
                     "type": "patch",
-                    "path": "speak-fix-encoding.patch"
+                    "path": "speak-fix-photo.patch"
                 },
                 {
                     "type": "patch",
@@ -312,9 +283,9 @@
                 }
             ],
             "post-install": [
-                "python3 /app/bin/sugarapp-gen-mimetypes activity/activity.info mimetypes",
-                "python3 /app/bin/sugarapp-gen-appdata activity/activity.info appdata",
-                "python3 /app/bin/sugarapp-gen-desktop activity/activity.info desktop --mimetypes mimetypes",
+                "sugarapp-gen-mimetypes activity/activity.info mimetypes",
+                "sugarapp-gen-appdata activity/activity.info appdata",
+                "sugarapp-gen-desktop activity/activity.info desktop --mimetypes mimetypes",
                 "install -D mimetypes /app/share/mime/packages/org.sugarlabs.Speak.xml",
                 "install -D mimetypes /app/share/sugar/activities/Speak.activity/activity/mimetypes.xml",
                 "install -D appdata /app/share/metainfo/org.sugarlabs.Speak.appdata.xml",

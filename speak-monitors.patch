@@ -1,26 +1,16 @@
-From 29765707d269b78013bce221d14da75a7b6bced7 Mon Sep 17 00:00:00 2001
-From: Martin Abente Lahaye <martin.abente.lahaye@gmail.com>
-Date: Thu, 28 Nov 2019 07:31:36 -0300
-Subject: [PATCH 5/6] monitors
-
----
- activity.py | 13 +++++++------
- chatbox.py  | 16 +++++++++-------
- 2 files changed, 16 insertions(+), 13 deletions(-)
-
 diff --git a/activity.py b/activity.py
-index 801eb49..e92f6ea 100644
+index 335f25b..aac6f00 100644
 --- a/activity.py
 +++ b/activity.py
-@@ -82,6 +82,7 @@ from faceselect import FaceSelector
+@@ -84,6 +84,7 @@ from faceselect import FaceSelector
  
- import espeak
+ import speech
  
 +from sugarapp.helpers import PrimaryMonitor
  from sugarapp.widgets import SugarCompatibleActivity
  from sugarapp.widgets import DesktopOpenChooser
  
-@@ -207,7 +208,7 @@ class SpeakActivity(SugarCompatibleActivity):
+@@ -218,7 +219,7 @@ class SpeakActivity(SugarCompatibleActivity):
          self.face = face.View(fill_color=lighter)
          self._cartoon_face = self.face
          self.face.set_size_request(
@@ -29,7 +19,7 @@ index 801eb49..e92f6ea 100644
          self.face.show()
  
          # layout the screen
-@@ -336,12 +337,12 @@ class SpeakActivity(SugarCompatibleActivity):
+@@ -347,12 +348,12 @@ class SpeakActivity(SugarCompatibleActivity):
          self._entry.set_size_request(-1, style.GRID_CELL_SIZE)
          if self._toolbar_expanded():
              self.face.set_size_request(
@@ -44,19 +34,19 @@ index 801eb49..e92f6ea 100644
              self._chat.resize_chat_box()
              self._chat.resize_buddy_list()
  
-@@ -470,9 +471,9 @@ class SpeakActivity(SugarCompatibleActivity):
+@@ -479,9 +480,9 @@ class SpeakActivity(SugarCompatibleActivity):
              x = int(xyz[0])
              y = int(xyz[1])
              # DO SOMETHING HERE
--            if ((Gdk.Screen.width() > Gdk.Screen.height() and
-+            if ((PrimaryMonitor.width() > PrimaryMonitor.height() and
-                  abs(x) > abs(y)) or
--                (Gdk.Screen.width() < Gdk.Screen.height() and
-+                (PrimaryMonitor.width() < PrimaryMonitor.height() and
-                  abs(x) < abs(y))):
+-            if ((Gdk.Screen.width() > Gdk.Screen.height()
++            if ((PrimaryMonitor.width() > PrimaryMonitor.height()
+                  and abs(x) > abs(y))
+-                or (Gdk.Screen.width() < Gdk.Screen.height()
++                or (PrimaryMonitor.width() < PrimaryMonitor.height()
+                     and abs(x) < abs(y))):
                  sideways_phrase = random.randint(0, len(SIDEWAYS_PHRASES) - 1)
                  self.face.say(SIDEWAYS_PHRASES[sideways_phrase])
-@@ -770,7 +771,7 @@ class SpeakActivity(SugarCompatibleActivity):
+@@ -778,7 +779,7 @@ class SpeakActivity(SugarCompatibleActivity):
  
          self.face = view
          self.face.set_size_request(
@@ -66,7 +56,7 @@ index 801eb49..e92f6ea 100644
          if self._tablet_mode:
              self._box.pack_start(self._entry_box, False, True, 0)
 diff --git a/chatbox.py b/chatbox.py
-index 90b75c2..1287e97 100644
+index 5b5a95f..13e6008 100644
 --- a/chatbox.py
 +++ b/chatbox.py
 @@ -40,6 +40,8 @@ from sugar3 import profile
@@ -82,9 +72,9 @@ index 90b75c2..1287e97 100644
  
      def resize_box(self):
          self.set_buffer(self._empty_buffer)
--        self.set_size_request(Gdk.Screen.width() - style.GRID_CELL_SIZE -
-+        self.set_size_request(PrimaryMonitor.width() - style.GRID_CELL_SIZE -
-                               2 * style.DEFAULT_SPACING, -1)
+-        self.set_size_request(Gdk.Screen.width() - style.GRID_CELL_SIZE
++        self.set_size_request(PrimaryMonitor.width() - style.GRID_CELL_SIZE
+                               - 2 * style.DEFAULT_SPACING, -1)
  
      def __leave_notify_event_cb(self, widget, event):
 @@ -335,7 +337,7 @@ class ChatBox(Gtk.ScrolledWindow):
@@ -129,6 +119,4 @@ index 90b75c2..1287e97 100644
          self._conversation.set_size_request(width, height)
  
  
--- 
-2.19.1
 
