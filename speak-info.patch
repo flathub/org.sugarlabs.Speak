@@ -1,5 +1,5 @@
 diff --git a/activity/activity.info b/activity/activity.info
-index 9d347ce..75c0428 100644
+index 6867a2f..46cace8 100644
 --- a/activity/activity.info
 +++ b/activity/activity.info
 @@ -2,13 +2,17 @@
@@ -13,10 +13,10 @@ index 9d347ce..75c0428 100644
  categories = language
  icon = activity-speak
  exec = sugar-activity3 activity.SpeakActivity
- activity_version = 58
+ activity_version = 59
 -bundle_id = vu.lux.olpc.Speak
 -tags = Language
-+release_date = 2019-11-29
++release_date = 2020-02-21
 +bundle_id = org.sugarlabs.Speak
 +tags = Education
  repository = https://github.com/sugarlabs/speak
@@ -24,4 +24,3 @@ index 9d347ce..75c0428 100644
 +update_contact = tch@sugarlabs.org
 +developer_name = Sugar Labs Community
 +screenshots = https://raw.githubusercontent.com/sugarlabs/speak/master/screenshots/en/1.png https://raw.githubusercontent.com/sugarlabs/speak/master/screenshots/en/2.png
-
