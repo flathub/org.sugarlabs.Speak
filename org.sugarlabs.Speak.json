@@ -75,8 +75,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/sugarlabs/speak.git",
-                    "tag": "v58",
-                    "commit": "5345595059120485eed971bbc48e633a44deb130"
+                    "tag": "v59",
+                    "commit": "d804dcb16c2db94b7f99c70048139e82a114e321"
                 },
                 {
                     "type": "patch",
@@ -85,10 +85,6 @@
                 {
                     "type": "patch",
                     "path": "speak-fix-greeting.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "speak-fix-photo.patch"
                 },
                 {
                     "type": "patch",
