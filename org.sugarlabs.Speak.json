@@ -1,9 +1,9 @@
 {
     "app-id": "org.sugarlabs.Speak",
     "base": "org.sugarlabs.BaseApp",
-    "base-version": "21.04",
+    "base-version": "22.06",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "40",
+    "runtime-version": "42",
     "sdk": "org.gnome.Sdk",
     "separate-locales": false,
     "command": "sugarapp",
@@ -27,14 +27,21 @@
             "name": "numpy",
             "buildsystem": "simple",
             "build-commands": [
-                "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} numpy"
+                "pip3 install --no-build-isolation --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} numpy"
             ],
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://github.com/numpy/numpy/releases/download/v1.16.5/numpy-1.16.5.zip",
-                    "sha256": "8bb452d94e964b312205b0de1238dd7209da452343653ab214b5d681780e7a0c"
+                    "url": "https://github.com/numpy/numpy/releases/download/v1.22.4/numpy-1.22.4.zip",
+                    "sha256": "425b390e4619f58d8526b3dcf656dde069133ae5c240229821f01b5f44ea07af"
                 }
+            ],
+            "cleanup": [
+                "/bin",
+                "/lib/python3.*/site-packages/numpy/core/include",
+                "/lib/python3.*/site-packages/numpy/core/lib/libnpymath.a",
+                "/lib/python3.*/site-packages/numpy/tests",
+                "/lib/python3.*/site-packages/numpy/*/tests"
             ]
         },
         {
