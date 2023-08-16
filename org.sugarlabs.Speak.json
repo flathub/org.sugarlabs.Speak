@@ -79,7 +79,12 @@
                 {
                     "type": "git",
                     "url": "https://github.com/sugarlabs/gst-plugins-espeak.git",
-                    "commit": "b8e815a1b8ca1468d92ab8631779e3ee3d832613"
+                    "tag": "v0.6.0",
+                    "commit": "5cace1227427e25638f2f3447a79528e3c5b6db2",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
                 }
             ]
         },
