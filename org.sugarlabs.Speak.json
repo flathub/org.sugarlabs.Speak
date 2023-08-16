@@ -32,9 +32,13 @@
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://github.com/numpy/numpy/releases/download/v1.22.4/numpy-1.22.4.zip",
-                    "sha256": "425b390e4619f58d8526b3dcf656dde069133ae5c240229821f01b5f44ea07af"
-                }
+                    "url": "https://files.pythonhosted.org/packages/a0/41/8f53eff8e969dd8576ddfb45e7ed315407d27c7518ae49418be8ed532b07/numpy-1.25.2.tar.gz",
+                    "sha256": "fd608e19c8d7c55021dffd43bfe5492fab8cc105cc8986f813f8c3c048b38760",
+                    "x-checker-data": {
+                        "type": "pypi",
+                        "name": "numpy"
+                   }
+               }
             ],
             "cleanup": [
                 "/bin",
