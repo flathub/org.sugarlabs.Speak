@@ -32,13 +32,13 @@
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/a0/41/8f53eff8e969dd8576ddfb45e7ed315407d27c7518ae49418be8ed532b07/numpy-1.25.2.tar.gz",
-                    "sha256": "fd608e19c8d7c55021dffd43bfe5492fab8cc105cc8986f813f8c3c048b38760",
+                    "url": "https://files.pythonhosted.org/packages/d0/b0/13e2b50c95bfc1d5ee04925eb5c105726c838f922d0aaddd57b7c8be0f8b/numpy-1.26.3.tar.gz",
+                    "sha256": "697df43e2b6310ecc9d95f05d5ef20eacc09c7c4ecc9da3f235d39e71b7da1e4",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "numpy"
-                   }
-               }
+                    }
+                }
             ],
             "cleanup": [
                 "/bin",
@@ -50,7 +50,9 @@
         },
         {
             "name": "espeak-ng",
-            "cleanup": [ "*.la" ],
+            "cleanup": [
+                "*.la"
+            ],
             "no-parallel-make": true,
             "build-options": {
                 "ldflags": "-Wl,--allow-multiple-definition"
