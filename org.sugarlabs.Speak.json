@@ -24,6 +24,24 @@
     ],
     "modules": [
         {
+            "name": "meson-python",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --no-build-isolation --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} meson-python"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/a2/3b/276b596824a0820987fdcc7721618453b4f9a8305fe20b611a00ac3f948e/meson_python-0.15.0.tar.gz",
+                    "sha256": "fddb73eecd49e89c1c41c87937cd89c2d0b65a1c63ba28238681d4bd9484d26f",
+                    "x-checker-data": {
+                        "type": "pypi",
+                        "name": "meson-python"
+                    }
+                }
+            ]
+        },
+        {
             "name": "numpy",
             "buildsystem": "simple",
             "build-commands": [
