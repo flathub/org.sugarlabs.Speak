@@ -10,7 +10,8 @@ To know more refer: https://github.com/sugarlabs/speak
 ```
 git clone https://github.com/flathub/org.sugarlabs.Speak.git
 cd org.sugarlabs.Speak
-flatpak -y --user install org.gnome.{Platform,Sdk}//44
+flatpak -y --user install flathub org.gnome.{Platform,Sdk}//46
+flatpak -y --user install org.sugarlabs.BaseApp//24.04
 flatpak-builder --user --force-clean --install build org.sugarlabs.Speak.json
 ```
 
