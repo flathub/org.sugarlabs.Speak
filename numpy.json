@@ -1,0 +1,25 @@
+{
+    "name": "python3-numpy",
+    "buildsystem": "simple",
+    "cleanup": [
+        "/lib/python3.*/site-packages/numpy/tests",
+        "/lib/python3.*/site-packages/numpy/*/tests"
+    ],
+    "build-commands": [
+        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"numpy\" --no-build-isolation"
+    ],
+    "sources": [
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/57/fd/0005efbd0af48e55eb3c7208af93f2862d4b1a56cd78e84309a2d959208d/numpy-2.4.2.tar.gz",
+            "sha256": "659a6107e31a83c4e33f763942275fd278b21d095094044eb35569e86a21ddae",
+            "x-checker-data": {
+                "type": "pypi",
+                "name": "numpy"
+            }
+        }
+    ],
+    "modules": [
+        "meson-python.json"
+    ]
+}
